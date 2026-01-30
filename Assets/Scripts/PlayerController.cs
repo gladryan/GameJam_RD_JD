@@ -6,11 +6,13 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
 
-    public float maxVelocity = 20; // Maximum speed player can go
+    public float maxVelocity = 10; // Maximum speed player can go
     public float gravityScale = 1.5f; // Variable for gravity strength
     public float jumpAmount = 500;
     private float playerSpeed = 50; // Enables player to reach max speed fast enough
     private float movementX; // Stores horizontal movement
+
+    private bool isGrounded;
 
 
     void Awake()
@@ -37,9 +39,13 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse1))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W))
         {
-            rb.AddForce(Vector2.up * jumpAmount, ForceMode2D.Impulse);
+            if (isGrounded)
+            {
+                rb.AddForce(Vector2.up * jumpAmount, ForceMode2D.Impulse);
+                isGrounded = false;
+            }
         }
     }
 
@@ -50,10 +56,18 @@ public class PlayerController : MonoBehaviour
         // Assign horizontal movement to its own Vector2
         Vector2 hMovement = new Vector2(movementX, 0);
         // Stop speed increasing indefinitely
-        if (rb.linearVelocityX < maxVelocity && - rb.linearVelocityX > -maxVelocity)
+        if (rb.linearVelocity.magnitude < maxVelocity)
         {
             // Apply force to Rigidbody
             rb.AddForce(hMovement * playerSpeed);
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Ground")) {
+            isGrounded = true;
+        }
+    }
+
 }
