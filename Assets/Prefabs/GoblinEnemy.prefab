@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3457425960386569563}
   - component: {fileID: 5954639843928510754}
   m_Layer: 0
-  m_Name: SpiderEnemy
+  m_Name: GoblinEnemy
   m_TagString: Death
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
