@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 
     public float maxVelocity = 10; // Maximum speed player can go
     public float gravityScale = 1.5f; // Variable for gravity strength
-    public float jumpAmount = 500;
+    public float jumpAmount = 20;
     private float playerSpeed = 50; // Enables player to reach max speed fast enough
     private float movementX; // Stores horizontal movement
 
