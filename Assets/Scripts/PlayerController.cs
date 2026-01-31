@@ -15,10 +15,13 @@ public class PlayerController : MonoBehaviour
     public float jumpAmount = 20;
     private float playerSpeed = 50; // Enables player to reach max speed fast enough
     private float movementX; // Stores horizontal movement
+    private float dashAmount = 10;
     public int abilitySelector = 0;
     public int uses = 0;
     public Image star;
     public Sprite blankStar;
+    public SpriteRenderer maskRenderer;
+    public Sprite mask;
     private bool slammy = false;
 
     private bool isGrounded;
@@ -28,6 +31,7 @@ public class PlayerController : MonoBehaviour
     {
         // Assign Rigidbody 2D
         rb = GetComponent<Rigidbody2D>();
+        
     }
 
     void OnMove(InputValue movementValue)
@@ -61,6 +65,7 @@ public class PlayerController : MonoBehaviour
         if (uses == 0)
         {
             star.sprite = blankStar;
+            maskRenderer.sprite = mask;
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -87,6 +92,14 @@ public class PlayerController : MonoBehaviour
                 if (abilitySelector == 4)
                 {
                     GetComponent<death>().Invincibility = true;
+                if (abilitySelector == 3) {
+                    if (rb.linearVelocityX > 0)
+                    {
+                        rb.AddForce(Vector2.right * dashAmount, ForceMode2D.Impulse);
+                    }
+                    else {
+                        rb.AddForce(Vector2.left * dashAmount, ForceMode2D.Impulse);
+                    }
                     uses -= 1;
                 }
             }

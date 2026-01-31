@@ -10,6 +10,7 @@ public class gobby : MonoBehaviour
     public GameObject enemy;
     public Image star;
     public Sprite spiderStar;
+    public Sprite mask;
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -26,6 +27,7 @@ public class gobby : MonoBehaviour
             Destroy(enemy);
             player.GetComponent<PlayerController>().uses = 2;
             player.GetComponent<PlayerController>().abilitySelector = 3;
+            player.GetComponent<PlayerController>().maskRenderer.sprite = mask;
             star.sprite = spiderStar;
             
         }

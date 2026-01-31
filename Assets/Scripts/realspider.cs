@@ -12,6 +12,7 @@ public class realspider : MonoBehaviour
     public GameObject player;
     public Image star;
     public Sprite spiderStar;
+    public Sprite mask;
 
     IEnumerator WaitOnHit() {
         yield return new WaitForSeconds(2f);
@@ -32,6 +33,7 @@ public class realspider : MonoBehaviour
             Destroy(enemy);
             player.GetComponent<PlayerController>().uses = 2;
             player.GetComponent<PlayerController>().abilitySelector = 1;
+            player.GetComponent<PlayerController>().maskRenderer.sprite = mask;
             star.sprite = spiderStar;
         }
         if (canMove) {
