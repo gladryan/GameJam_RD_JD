@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     public SpriteRenderer maskRenderer;
     public Sprite mask;
     private bool slammy = false;
+    public GameObject canvas;
 
     private bool isGrounded;
 
@@ -140,6 +141,7 @@ public class PlayerController : MonoBehaviour
         }
         if (collision.collider.CompareTag("BreakableFloor"))
         {
+            isGrounded = true;
             if (slammy == true)
             {
                 Destroy(collision.gameObject);
@@ -148,7 +150,8 @@ public class PlayerController : MonoBehaviour
         }
         if (collision.collider.CompareTag("Goal"))
         {
-            SceneManager.LoadScene("Level Selection");
+            canvas.GetComponent<TickTock>().stopTimer();
+            SceneManager.LoadScene("Level Complete");
         }
     }
 
