@@ -1,5 +1,4 @@
 using System.Collections;
-using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -60,6 +59,10 @@ public class PlayerController : MonoBehaviour
                 rb.AddForce(Vector2.up * jumpAmount, ForceMode2D.Impulse);
                 isGrounded = false;
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1)) {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
 

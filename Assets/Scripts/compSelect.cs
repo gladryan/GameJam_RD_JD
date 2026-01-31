@@ -19,4 +19,9 @@ public class compSelect : MonoBehaviour
     {
         SceneManager.LoadScene("Level Selection");
     }
+
+    public void quitOut()
+    {
+        Application.Quit();
+    }
 }
