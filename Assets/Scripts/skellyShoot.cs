@@ -14,6 +14,7 @@ public class skellyShoot : MonoBehaviour
     public GameObject enemy;
     public Image star;
     public Sprite skeletonStar;
+    public Sprite mask;
 
     IEnumerator ShootWait(Vector3 dp) {
         yield return new WaitForSeconds(1f);
@@ -30,6 +31,7 @@ public class skellyShoot : MonoBehaviour
             Destroy(enemy);
             player.GetComponent<PlayerController>().uses = 1;
             player.GetComponent<PlayerController>().abilitySelector = 4;
+            player.GetComponent<PlayerController>().maskRenderer.sprite = mask;
             star.sprite = skeletonStar;
         }
         Vector3 displacement = player.position - transform.position;

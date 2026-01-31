@@ -87,11 +87,13 @@ public class PlayerController : MonoBehaviour
                         slammy = true;
                     }
                     rb.AddForce(Vector2.down * 30, ForceMode2D.Impulse);
-                    uses -= 1; 
+                    uses -= 1;
                 }
                 if (abilitySelector == 4)
                 {
                     GetComponent<death>().Invincibility = true;
+                    uses -= 1;
+                }
                 if (abilitySelector == 3) {
                     if (rb.linearVelocityX > 0)
                     {
@@ -100,22 +102,22 @@ public class PlayerController : MonoBehaviour
                     else {
                         rb.AddForce(Vector2.left * dashAmount, ForceMode2D.Impulse);
                     }
-                    uses -= 1;
+                        uses -= 1;
+                    }
                 }
             }
-        }
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            if (abilitySelector == 2)
+            if (Input.GetKeyDown(KeyCode.R))
             {
-                if (uses > 0)
+                if (abilitySelector == 2)
                 {
-                    rb.AddForce(Vector2.up * 25, ForceMode2D.Impulse);
-                    uses -= 1;
+                    if (uses > 0)
+                    {
+                        rb.AddForce(Vector2.up * 25, ForceMode2D.Impulse);
+                        uses -= 1;
+                    }
                 }
             }
         }
-    }
 
     private void FixedUpdate()
     {
