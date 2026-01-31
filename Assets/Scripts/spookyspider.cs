@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class spookyspider : MonoBehaviour
 {
     Vector3 startpos;
-    private float speed = 3f;
+    private float speed = 8f;
     public Transform player;
     private int health = 3;
     public GameObject enemy;
