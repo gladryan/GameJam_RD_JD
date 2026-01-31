@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
-public class uglygoblin : MonoBehaviour
+public class suckyslime : MonoBehaviour
 {
     Vector3 startpos;
     private float speed = 3f;
@@ -16,6 +16,7 @@ public class uglygoblin : MonoBehaviour
     public GameObject enemy;
     public Image star;
     public Sprite slimeStar;
+    public Sprite mask;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -32,6 +33,7 @@ public class uglygoblin : MonoBehaviour
             Destroy(enemy);
             player.GetComponent<PlayerController>().uses = 3;
             player.GetComponent<PlayerController>().abilitySelector = 2;
+            player.GetComponent<PlayerController>().maskRenderer.sprite = mask;
             star.sprite = slimeStar;
         }
         Vector3 displacement = player.position - transform.position;
