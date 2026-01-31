@@ -25,7 +25,7 @@ public class death : MonoBehaviour
 
     IEnumerator wait3Seconds()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
         Invincibility = false;
     }
     private void OnCollisionEnter2D(Collision2D collision)
