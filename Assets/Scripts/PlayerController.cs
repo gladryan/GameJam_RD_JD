@@ -89,6 +89,9 @@ public class PlayerController : MonoBehaviour
                     rb.AddForce(Vector2.down * 30, ForceMode2D.Impulse);
                     uses -= 1; 
                 }
+                if (abilitySelector == 4)
+                {
+                    GetComponent<death>().Invincibility = true;
                 if (abilitySelector == 3) {
                     if (rb.linearVelocityX > 0)
                     {
