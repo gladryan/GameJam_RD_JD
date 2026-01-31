@@ -3,6 +3,7 @@ using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public class PlayerController : MonoBehaviour
@@ -16,6 +17,8 @@ public class PlayerController : MonoBehaviour
     private float movementX; // Stores horizontal movement
     public int abilitySelector = 0;
     public int uses = 0;
+    public Image star;
+    public Sprite blankStar;
     private bool slammy = false;
 
     private bool isGrounded;
@@ -54,6 +57,11 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+
+        if (uses == 0)
+        {
+            star.sprite = blankStar;
+        }
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (uses > 0)
