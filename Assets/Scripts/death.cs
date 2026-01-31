@@ -1,13 +1,12 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class death : MonoBehaviour
 {
     public GameObject player;
-    Vector2 startPos;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        startPos = player.transform.position;
     }
 
     // Update is called once per frame
@@ -20,7 +19,7 @@ public class death : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Death"))
         {
-            player.transform.position = startPos;
+            SceneManager.LoadScene("Level Selection");
         }
     }
 

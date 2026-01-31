@@ -11,6 +11,8 @@ public class uglygoblin : MonoBehaviour
     private bool isGrounded;
     public Transform player;
     Rigidbody2D rb;
+    private int health = 3;
+    public GameObject enemy;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -22,7 +24,12 @@ public class uglygoblin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (health == 0)
+        {
+            Destroy(enemy);
+            player.GetComponent<PlayerController>().uses = 3;
+            player.GetComponent<PlayerController>().abilitySelector = 2;
+        }
         Vector3 displacement = player.position - transform.position;
         displacement = displacement.normalized;
         if (Vector2.Distance(player.position, transform.position) > 1.0f)
@@ -55,6 +62,11 @@ public class uglygoblin : MonoBehaviour
         if (collision.collider.CompareTag("Ground"))
         {
             isGrounded = true;
+        }
+        if (collision.collider.CompareTag("Bullet"))
+        {
+            health -= 1;
+            Destroy(collision.gameObject);
         }
     }
 }
