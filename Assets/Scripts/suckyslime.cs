@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class uglygoblin : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class uglygoblin : MonoBehaviour
     Rigidbody2D rb;
     private int health = 3;
     public GameObject enemy;
+    public Image star;
+    public Sprite slimeStar;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -29,6 +32,7 @@ public class uglygoblin : MonoBehaviour
             Destroy(enemy);
             player.GetComponent<PlayerController>().uses = 3;
             player.GetComponent<PlayerController>().abilitySelector = 2;
+            star.sprite = slimeStar;
         }
         Vector3 displacement = player.position - transform.position;
         displacement = displacement.normalized;

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class spookyspider : MonoBehaviour
+public class gobby : MonoBehaviour
 {
     Vector3 startpos;
     private float speed = 8f;
