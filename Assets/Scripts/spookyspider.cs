@@ -3,7 +3,7 @@ using UnityEngine;
 public class spookyspider : MonoBehaviour
 {
     Vector3 startpos;
-    private float speed = 3f;
+    private float speed = 8f;
     public Transform player;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
