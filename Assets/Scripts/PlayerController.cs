@@ -84,6 +84,11 @@ public class PlayerController : MonoBehaviour
                     rb.AddForce(Vector2.down * 30, ForceMode2D.Impulse);
                     uses -= 1; 
                 }
+                if (abilitySelector == 4)
+                {
+                    GetComponent<death>().Invincibility = true;
+                    uses -= 1;
+                }
             }
         }
         if (Input.GetKeyDown(KeyCode.R))

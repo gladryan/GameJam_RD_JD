@@ -4,9 +4,9 @@ using UnityEngine.UI;
 public class gobby : MonoBehaviour
 {
     Vector3 startpos;
-    private float speed = 8f;
+    private float speed = 15f;
     public Transform player;
-    private int health = 3;
+    private int health = 1;
     public GameObject enemy;
     public Image star;
     public Sprite spiderStar;
@@ -25,7 +25,7 @@ public class gobby : MonoBehaviour
         {
             Destroy(enemy);
             player.GetComponent<PlayerController>().uses = 2;
-            player.GetComponent<PlayerController>().abilitySelector = 1;
+            player.GetComponent<PlayerController>().abilitySelector = 3;
             star.sprite = spiderStar;
             
         }

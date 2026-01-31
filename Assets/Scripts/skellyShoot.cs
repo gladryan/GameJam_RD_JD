@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using Unity.VisualScripting;
+using UnityEngine.UI;
 
 public class skellyShoot : MonoBehaviour
 {
@@ -8,6 +10,10 @@ public class skellyShoot : MonoBehaviour
     public Transform player;
     private float arrowSpeed = 25;
     private bool canShoot = true;
+    private int health = 2;
+    public GameObject enemy;
+    public Image star;
+    public Sprite skeletonStar;
 
     IEnumerator ShootWait(Vector3 dp) {
         yield return new WaitForSeconds(1f);
@@ -19,6 +25,13 @@ public class skellyShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (health == 0)
+        {
+            Destroy(enemy);
+            player.GetComponent<PlayerController>().uses = 1;
+            player.GetComponent<PlayerController>().abilitySelector = 4;
+            star.sprite = skeletonStar;
+        }
         Vector3 displacement = player.position - transform.position;
         displacement = displacement.normalized;
         if (canShoot) {
@@ -39,5 +52,14 @@ public class skellyShoot : MonoBehaviour
             canShoot = false;
         }
         
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+
+        if (collision.collider.CompareTag("Bullet"))
+        {
+            health -= 1;
+            Destroy(collision.gameObject);
+        }
     }
 }
