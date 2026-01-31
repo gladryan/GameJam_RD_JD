@@ -162,7 +162,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 2
 --- !u!114 &5954639843928510754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,3 +176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  enemy: {fileID: 0}
+  star: {fileID: 0}
+  spiderStar: {fileID: 0}
+  mask: {fileID: 0}
